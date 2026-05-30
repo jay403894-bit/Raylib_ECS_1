@@ -1,0 +1,56 @@
+#include "Scenes.h"
+MapScene::MapScene(const std::string& mapFilePath)
+    : tMap() {
+    world = std::make_unique<b2World>();
+    // Load the map into Tilemap, passing Box2D world
+    tMap.Load(mapFilePath, *world);
+    GetSpawnPoints();
+    GetCollisionRects();
+    Spawn();
+}
+
+void MapScene::Update(bool& isRunning, float dt) {
+    world->Step(dt, 6, 2); // Update the Box2D world with velocity and position iterations
+
+    // Update each entity
+    for (auto& entity : entities) {
+        entity->Update();
+    }
+}
+
+void MapScene::HandleInput() {
+    // Handle player and entity input
+}
+
+void MapScene::Draw() {
+    tMap.Draw(1.0f);  // Draw the tilemap
+    for (auto& entity : entities) {
+        entity->Draw();  // Draw each entity (e.g., player)
+    }
+}
+
+void MapScene::GetSpawnPoints() {
+    // Extract spawn points from the Tiled map (same as your previous code)
+}
+
+void MapScene::GetCollisionRects() {
+    // Extract collision rects if needed (same as your previous code)
+}
+
+void MapScene::Spawn() {
+    for (const auto& sp : spawnPoints) {
+        if (sp.type == "player") {
+            // Create a new player entity
+            player = std::make_shared<Entity>();
+
+            // Set the player's position and other properties
+            player->SetTexture("knight1.png", { 0, 0, 12, 19 });
+
+            // Spawn the entity in the Box2D world
+            player->CreateBody(*world, sp.position.x, sp.position.y, 64.0f, 64.0f); // Adjust size accordingly
+
+            // Add the entity to the entities list
+            entities.push_back(player);
+        }
+    }
+}

@@ -1,0 +1,40 @@
+
+#include "Scenes.h"
+
+
+Box2DScene::Box2DScene() {
+	// Load player texture
+	player.texture = LoadTexture("knight1.png");
+	if (player.texture.width == 0 || player.texture.height == 0) {
+		printf("Failed to load texture!\n");
+	}
+
+	// Create Box2D body for the player
+	player.body = world.CreateBox(0.0f, 0.0f, 1.0f, 1.0f);  // 1x1 meter box
+}
+
+void Box2DScene::Update(bool& isRunning,float dt) {
+	// Example: Update player position based on input or physics
+	world.Step(1.0f / 60.0f);  // Step the Box2D world forward
+
+	// Handle player input for movement (optional)
+	if (IsKeyDown(KEY_RIGHT)) {
+		player.body->ApplyForceToCenter(b2Vec2(10.0f, 0.0f), true);
+	}
+
+	// Handle cleanup or other updates here
+}
+
+void Box2DScene::Draw() {
+	ClearBackground(RAYWHITE);
+
+	// Render all Box2D bodies (like the player)
+}
+
+void Box2DScene::HandleInput() {
+	// Handle other input if necessary (e.g., adding more bodies)
+	if (IsKeyPressed(KEY_SPACE)) {
+		world.CreateBox(rand() % 10 - 5, rand() % 10 + 5, 1.0f, 1.0f);
+	}
+}
+

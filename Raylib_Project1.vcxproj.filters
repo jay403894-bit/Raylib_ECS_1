@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\ResourceManagers">
+      <UniqueIdentifier>{e1a3a292-e8ac-4012-8cfb-b2db18e6ec6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\ResourceManagers">
+      <UniqueIdentifier>{e4fe6c64-ecb6-4ca6-9dd0-8cd7d54981c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scenes">
+      <UniqueIdentifier>{b007b3ca-4fe0-4e4b-982b-4097c3b34fdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenes">
+      <UniqueIdentifier>{7e6aafdc-f9a6-4551-b98f-1762f1f88261}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{d94600a9-9abd-43dd-93d9-afeb8a1a8f3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{f3c5c6dc-6252-4f62-9686-75290fb9a8d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Systems">
+      <UniqueIdentifier>{18b22b83-5812-407c-9d89-77c3381d7c29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TaskScheduler">
+      <UniqueIdentifier>{bf9a7594-7e59-4f27-a91e-2613fd3a8ef9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files\ResourceManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>Source Files\ResourceManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderManager.cpp">
+      <Filter>Source Files\ResourceManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files\ResourceManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="StartMenu.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityManager.cpp">
+      <Filter>Source Files\ResourceManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Source Files\ResourceManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskManager\Event.cpp">
+      <Filter>Header Files\TaskScheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskManager\T_Thread.cpp">
+      <Filter>Header Files\TaskScheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskManager\Task.cpp">
+      <Filter>Header Files\TaskScheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskManager\TaskManager.cpp">
+      <Filter>Header Files\TaskScheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskManager\TaskQueue.cpp">
+      <Filter>Header Files\TaskScheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskManager\TaskScheduler.cpp">
+      <Filter>Header Files\TaskScheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Clock.cpp">
+      <Filter>Header Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\GameTimer.cpp">
+      <Filter>Header Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Log.cpp">
+      <Filter>Header Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Logger.cpp">
+      <Filter>Header Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Object.cpp">
+      <Filter>Header Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\RandomGenerator.cpp">
+      <Filter>Header Files\Utilities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FontManager.h">
+      <Filter>Header Files\ResourceManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Header Files\ResourceManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderManager.h">
+      <Filter>Header Files\ResourceManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Header Files\ResourceManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Header Files\ResourceManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="InputComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityManager.h">
+      <Filter>Header Files\ResourceManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="TagComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollider2D.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidBody2D.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Tilemap.h">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsMaterial.h">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Tilesheet.h">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="SensorComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskManager\Event.h">
+      <Filter>Header Files\TaskScheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskManager\Event.hpp">
+      <Filter>Header Files\TaskScheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskManager\T_Thread.h">
+      <Filter>Header Files\TaskScheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskManager\Task.h">
+      <Filter>Header Files\TaskScheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskManager\TaskManager.h">
+      <Filter>Header Files\TaskScheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskManager\TaskQueue.h">
+      <Filter>Header Files\TaskScheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskManager\TaskScheduler.h">
+      <Filter>Header Files\TaskScheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Clock.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\GameTimer.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Log.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Logger.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Object.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\RandomGenerator.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="telegrama_raw.otf">
+      <Filter>Resource Files</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="untitled.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="untitled.tiled-session">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="untitled.tmj">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="TransformComponent" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="map.txt" />
+  </ItemGroup>
+</Project>

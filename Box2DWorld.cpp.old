@@ -1,0 +1,76 @@
+#include "Box2DWorld.h"
+
+Box2DWorld::Box2DWorld(float gravityX, float gravityY)
+	: gravity(gravityX, gravityY), world(gravity) {
+}
+void Box2DWorld::Step(float timeStep)
+{
+	world.Step(timeStep, 8, 3);  // 8 velocity iterations, 3 position iterations
+}
+
+b2Body* Box2DWorld::CreateBox(float x, float y, float width, float height, float density, float friction) {
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_dynamicBody;  // Dynamic body to simulate movement
+    bodyDef.position.Set(x, y);  // Set position in Box2D world
+
+    b2Body* body = world.CreateBody(&bodyDef);
+
+    b2PolygonShape boxShape;
+    boxShape.SetAsBox(width / 2, height / 2);  // Box2D uses half-width and half-height for the shape
+
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &boxShape;
+    fixtureDef.density = density;
+    fixtureDef.friction = friction;
+
+    body->CreateFixture(&fixtureDef);
+
+    return body;
+}
+
+void Box2DWorld::RenderBodies(Texture2D sprite) {
+    for (b2Body* body = world.GetBodyList(); body; body = body->GetNext()) {
+        b2Vec2 position = body->GetPosition();
+        float angle = body->GetAngle();
+
+        // Convert Box2D coordinates to Raylib coordinates
+        float scale = 30.0f;  // Scale factor from Box2D world units to screen pixels
+        float x = position.x * scale;
+        float y = -position.y * scale;  // Invert y to match Raylib's coordinate system
+
+        // Draw the sprite at the body's position
+        Vector2 positionVec = { x, y };
+        DrawTextureEx(sprite, positionVec, angle * (180.0f / 3.14159f), 1.0f, WHITE);
+    }
+}
+void Box2DWorld::RenderBodies(const std::vector<Entity*>& entities) {
+    for (auto& entity : entities) {
+        entity->Draw();
+    }
+}
+
+void Box2DWorld::RenderBodies() {
+    for (b2Body* body = world.GetBodyList(); body; body = body->GetNext()) {
+        b2Vec2 position = body->GetPosition();
+        float angle = body->GetAngle();
+
+        // Render each body (Box2D world coordinates to Raylib coordinates)
+        DrawRectanglePro(
+            Rectangle{ position.x, -position.y, 40.0f, 40.0f },  // Remove scaling factor
+            Vector2{ 20.0f, 20.0f },
+            angle * (180.0f / 3.14159f),  // Convert radians to degrees
+            BLUE
+        );
+    }
+}
+
+b2Body* Box2DWorld::CreateBody(const b2BodyDef& bodyDef, const b2FixtureDef& fixtureDef)
+{
+    // Create the body in Box2D world
+    b2Body* body = world.CreateBody(&bodyDef);
+
+    // Attach the fixture to the body
+    body->CreateFixture(&fixtureDef);
+
+    return body;  // Return the body}
+}

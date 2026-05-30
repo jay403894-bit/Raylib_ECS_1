@@ -1,0 +1,69 @@
+#pragma once
+#include "raylib.h"
+#include "box2d/box2d.h"
+
+class Box2DWorld {
+public:
+    b2World world;
+    float meterToPixel;
+
+    Box2DWorld(float gravityX = 0.0f, float gravityY = -9.8f, float meterToPixel = 50.0f)
+        : world(b2Vec2(gravityX, gravityY)), meterToPixel(meterToPixel) {
+    }
+    b2World& GetWorld() {
+        return world;
+    }
+    // Create a Box2D body (simple box shape)
+    b2Body* CreateDynamicBox(float x, float y, float width, float height) {
+        b2BodyDef bodyDef;
+        bodyDef.position.Set(x, y);  // Position in meters
+        bodyDef.type = b2_dynamicBody;
+        b2Body* body = world.CreateBody(&bodyDef);
+
+        b2PolygonShape boxShape;
+        boxShape.SetAsBox(width / 2.0f, height / 2.0f);  // Size in meters
+
+        b2FixtureDef fixtureDef;
+        fixtureDef.shape = &boxShape;
+        fixtureDef.density = 1.0f;
+        fixtureDef.friction = 0.3f;
+        body->CreateFixture(&fixtureDef);
+
+        return body;
+    }
+
+    b2Body* CreateStaticBox(float x, float y, float width, float height) {
+        b2BodyDef bodyDef;
+        bodyDef.position.Set(x, y);
+        bodyDef.type = b2_staticBody;
+
+        b2Body* body = world.CreateBody(&bodyDef);
+
+        b2PolygonShape boxShape;
+        boxShape.SetAsBox(width / 2.0f, height / 2.0f);
+
+        body->CreateFixture(&boxShape, 0.0f);
+
+        return body;
+    }
+
+    Vector2 ToPixels(const b2Vec2& vec) {
+        float screenHeight = (float)GetScreenHeight();
+        return { vec.x * meterToPixel, screenHeight - vec.y * meterToPixel };
+    }
+
+    void DrawBody(b2Body* body, float width, float height, Color color) {
+        b2Vec2 pos = body->GetPosition();
+        Vector2 screenPos = ToPixels(pos);
+
+        DrawRectanglePro(
+            { screenPos.x, screenPos.y, width * meterToPixel, height * meterToPixel },
+            { (width * meterToPixel) / 2.0f, (height * meterToPixel) / 2.0f },
+            RAD2DEG * body->GetAngle(),
+            color
+        );
+    }
+    void Step(float timeStep = 1.0f / 60.0f) {
+        world.Step(timeStep, 8, 3);  // Physics simulation step
+    }
+};
